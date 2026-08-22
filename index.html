@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Romão — Desenvolvedor Web & Soluções em Sistemas</title>
+    <style>
+        :root {
+            --navy-900: #0a1530;
+            --navy-800: #0d1c3f;
+            --blue-600: #2563eb;
+            --blue-500: #3b82f6;
+            --blue-400: #60a5fa;
+            --ink: #0f1b33;
+            --muted: #64748b;
+            --line: #e6eaf2;
+            --paper: #ffffff;
+            --paper-2: #f6f8fc;
+            --linkedin: #0a66c2;
+            --github: #181717;
+            --instagram: #e1306c;
+            --whatsapp: #25d366;
+            --footer-bg: #07162c;
+            --footer-muted: #b9c8e6;
+            --footer-link: #d9e8ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 48px;
+            border-bottom: 1px solid var(--line);
+            background: var(--paper);
+            position: relative;
+            z-index: 20;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand svg {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+        }
+
+        .brand-text .name {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--ink);
+            line-height: 1.15;
+        }
+
+        .brand-text .tag {
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: .02em;
+        }
+
+        nav {
+            display: flex;
+            gap: 36px;
+        }
+
+        nav a {
+            font-size: 14.5px;
+            font-weight: 500;
+            color: #25314f;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: .2s;
+        }
+
+        nav a.active {
+            color: var(--blue-600);
+            border-color: var(--blue-600);
+        }
+
+        nav a:hover {
+            color: var(--blue-600);
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--ink);
+            color: #fff;
+            padding: 11px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .cta-btn:hover {
+            background: var(--blue-600);
+        }
+
+        .cta-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            position: relative;
+            background:
+                radial-gradient(ellipse 900px 600px at 78% 30%, rgba(59, 130, 246, .55), transparent 60%),
+                radial-gradient(ellipse 700px 500px at 60% 90%, rgba(37, 99, 235, .35), transparent 60%),
+                linear-gradient(160deg, var(--navy-900) 0%, #050b1c 100%);
+            overflow: hidden;
+            padding: 88px 48px 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: linear-gradient(to bottom, black, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: .09em;
+            color: #bcd0ff;
+            background: rgba(59, 130, 246, .14);
+            border: 1px solid rgba(96, 165, 250, .35);
+            padding: 7px 14px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+        }
+
+        .eyebrow .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--blue-400);
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            line-height: 1.18;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -.01em;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(90deg, #5b9dff, #8ec2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #b6c2de;
+            max-width: 480px;
+            margin-bottom: 34px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue-600);
+            color: #fff;
+            padding: 14px 22px;
+            border-radius: 9px;
+            font-size: 14.5px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-500);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: #fff;
+            padding: 14px 22px;
+            border-radius: 9px;
+            font-size: 14.5px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, .28);
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        .btn-ghost svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* device mockups */
+        .hero-devices {
+            position: relative;
+            height: 520px;
+        }
+
+        .laptop {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .laptop .screen {
+            background: #0b1226;
+            border-radius: 14px 14px 0 0;
+            border: 6px solid #1b2542;
+            border-bottom: none;
+            padding: 8px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, .55);
+        }
+
+        .laptop .screen-inner {
+            background: var(--paper-2);
+            border-radius: 6px;
+            aspect-ratio: 16/10.2;
+            overflow: hidden;
+            padding: 14px;
+        }
+
+        .laptop .base {
+            height: 14px;
+            background: linear-gradient(180deg, #d7dbe4, #a9afbc);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+        }
+
+        .laptop .base::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 5px;
+            background: #8b93a6;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .tablet {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            width: 260px;
+            background: #0d1730;
+            border: 5px solid #1b2542;
+            border-radius: 20px;
+            box-shadow: 0 24px 55px rgba(0, 0, 0, .5);
+            padding: 10px;
+        }
+
+        .tablet .tscreen {
+            background: var(--navy-900);
+            border-radius: 10px;
+            padding: 16px 14px;
+            aspect-ratio: 3/4.2;
+            overflow: hidden;
+        }
+
+        .phone {
+            position: absolute;
+            bottom: -14px;
+            right: -28px;
+            width: 130px;
+            background: #0d1730;
+            border: 4px solid #1b2542;
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .55);
+            padding: 7px;
+        }
+
+        .phone .pscreen {
+            background: var(--navy-900);
+            border-radius: 13px;
+            padding: 12px 10px;
+            aspect-ratio: 9/17.5;
+            overflow: hidden;
+        }
+
+        /* mini dashboard inside laptop */
+        .mini-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .mini-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 9px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .mini-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            background: var(--blue-600);
+        }
+
+        .mini-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 7px;
+            margin-bottom: 9px;
+        }
+
+        .mini-card {
+            background: #fff;
+            border-radius: 5px;
+            padding: 7px 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+        }
+
+        .mini-card .n {
+            font-size: 10px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .mini-card .l {
+            font-size: 6px;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .mini-chart {
+            background: #fff;
+            border-radius: 5px;
+            height: 88px;
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            padding: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+        }
+
+        .mini-chart span {
+            flex: 1;
+            background: linear-gradient(180deg, #93c5fd, #3b82f6);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .mini-dark-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .mini-dark-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 8px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .mini-dark-eyebrow {
+            font-size: 5px;
+            color: #8ea3d6;
+            letter-spacing: .06em;
+            margin-bottom: 6px;
+        }
+
+        .mini-dark-h {
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .mini-dark-h b {
+            color: #7db0ff;
+        }
+
+        .mini-dark-p {
+            font-size: 6px;
+            color: #8ea3d6;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .mini-dark-btns {
+            display: flex;
+            gap: 5px;
+        }
+
+        .mini-dark-btns div {
+            font-size: 5.5px;
+            font-weight: 700;
+            padding: 4px 7px;
+            border-radius: 3px;
+        }
+
+        .mini-dark-btns .p {
+            background: var(--blue-600);
+            color: #fff;
+        }
+
+        .mini-dark-btns .g {
+            border: 1px solid rgba(255, 255, 255, .3);
+            color: #fff;
+        }
+
+        /* ---------- PROJECTS ---------- */
+        .projects {
+            padding: 64px 48px 30px;
+        }
+
+        .projects-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            max-width: 1500px;
+            margin: 0 auto 34px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .projects-head .eyebrow-2 {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            color: var(--blue-600);
+            margin-bottom: 8px;
+        }
+
+        .projects-head h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--ink);
+            position: relative;
+            display: inline-block;
+        }
+
+        .projects-head h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 56px;
+            height: 3px;
+            background: var(--blue-600);
+            border-radius: 2px;
+        }
+
+        .projects-head .right {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            max-width: 420px;
+        }
+
+        .projects-head .right p {
+            font-size: 13.5px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            border: 1px solid var(--line);
+            background: #fff;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--ink);
+            transition: .2s;
+        }
+
+        .link-btn:hover {
+            border-color: var(--blue-500);
+            color: var(--blue-600);
+        }
+
+        .link-btn svg {
+            width: 13px;
+            height: 13px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            transition: .25s;
+        }
+
+        .card-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .card-link:hover .card {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(15, 27, 51, .08);
+            border-color: transparent;
+        }
+
+        .card .thumb {
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 16px;
+        }
+
+        .card .thumb h3 {
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .card .thumb p {
+            font-size: 10.5px;
+            opacity: .85;
+            margin-top: 5px;
+        }
+
+        .card .body {
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card .body .t {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .card .body .s {
+            font-size: 11.5px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .card .arrow {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: .2s;
+        }
+
+        .card:hover .arrow {
+            background: var(--blue-600);
+            border-color: var(--blue-600);
+        }
+
+        .card:hover .arrow svg {
+            stroke: #fff;
+        }
+
+        .card .arrow svg {
+            width: 13px;
+            height: 13px;
+            stroke: #334155;
+        }
+
+        .thumb.t1 {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+
+        .thumb.t2 {
+            background: linear-gradient(135deg, #1c2b47, #0e1a30);
+        }
+
+        .thumb.t3 {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        }
+
+        .thumb.t4 {
+            background: #eef3fb;
+            color: #1e293b;
+        }
+
+        .thumb.t5 {
+            background: #eef3fb;
+            color: #1e293b;
+        }
+
+        .thumb.t6 {
+            background: linear-gradient(135deg, #0f2540, #0a1830);
+        }
+
+        .thumb.t7 {
+            background: linear-gradient(135deg, #bfdcff, #8fc2f7);
+            color: #0f1b33;
+        }
+
+        .thumb.t8 {
+            background: #eef3fb;
+            color: #1e293b;
+        }
+
+        /* ---------- FEATURES STRIP ---------- */
+        .features {
+            background: var(--paper-2);
+            padding: 44px 48px;
+            margin-top: 50px;
+            border-top: 1px solid var(--line);
+        }
+
+        .features-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 36px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .feature .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 9px;
+            background: #fff;
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature .icon svg {
+            width: 19px;
+            height: 19px;
+            stroke: var(--blue-600);
+        }
+
+        .feature h4 {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .feature p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .site-footer {
+            background: linear-gradient(180deg, var(--footer-bg) 0%, var(--navy-900) 100%);
+            color: #e2ebff;
+            padding: 56px 48px 26px;
+            margin-top: 20px;
+        }
+
+        .footer-inner {
+            max-width: 1500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--blue-600), #76aaf8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .footer-brand h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .footer-copy {
+            color: var(--footer-muted);
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+        }
+
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            color: var(--footer-link);
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer-col a:hover {
+            color: #8bb8ff;
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+            margin-bottom: 18px;
+        }
+
+        .socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: 13px;
+            transition: transform .2s ease, filter .2s ease;
+        }
+
+        .socials a:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+
+        .socials .linkedin {
+            background: var(--linkedin);
+        }
+
+        .socials .github {
+            background: var(--github);
+        }
+
+        .socials .instagram {
+            background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+        }
+
+        .socials .whatsapp {
+            background: var(--whatsapp);
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--whatsapp);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 8px;
+            box-shadow: 0 10px 22px rgba(37, 211, 102, .28);
+        }
+
+        .whatsapp-link:hover {
+            filter: brightness(1.05);
+        }
+
+        .footer-bottom {
+            max-width: 1500px;
+            margin: 28px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, .12);
+            text-align: center;
+            font-size: 12px;
+            color: #b9c8e6;
+        }
+
+        @media (max-width:1100px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-devices {
+                display: none;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width:600px) {
+            header {
+                padding: 14px 20px;
+            }
+
+            .hero {
+                padding: 60px 20px 0;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .projects {
+                padding: 44px 20px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                padding: 34px 20px;
+            }
+
+            .features-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .site-footer {
+                padding: 44px 20px 22px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="brand">
+            <svg viewBox="0 0 40 40" fill="none">
+                <path d="M20 3L36 34H24L20 26L16 34H4L20 3Z" fill="#2563eb" />
+                <path d="M20 3L28 19H20V3Z" fill="#60a5fa" />
+            </svg>
+            <div class="brand-text">
+                <div class="name">Samuel Romão</div>
+                <div class="tag">Desenvolvedor Web &amp; Soluções em Sistemas</div>
+            </div>
+        </div>
+        <nav>
+            <a href="#inicio" class="active">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#projetos">Projetos</a>
+
+        </nav>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=samuelfreire2527@gmail.com&amp;su=Vamos%20trabalhar%20juntos&amp;body=Ol%C3%A1%2C%20Samuel!%0A%0AGostaria%20de%20conversar%20sobre%20um%20projeto."
+            class="cta-btn" target="_blank" rel="noopener noreferrer">Vamos Trabalhar Juntos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+        </a>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-inner">
+            <div>
+                <div class="eyebrow"><span class="dot"></span> DESENVOLVIMENTO WEB &amp; VENDA DE SISTEMAS</div>
+                <h1>Construindo <span class="accent">Soluções Web.</span><br>Entregando <span class="accent">Resultados
+                        de Negócio.</span></h1>
+                <p class="lead">Eu projeto e desenvolvo sites modernos e ofereço soluções inovadoras em sistemas que
+                    ajudam empresas a crescer, operar com eficiência e se manterem à frente no mundo digital.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="#projetos">Ver Meu Trabalho
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                    <a class="btn-ghost" href="#servicos">Serviços que Ofereço
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="5" width="16" height="15" rx="2" />
+                            <path d="M8 3v4M16 3v4M4 10h16" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-devices">
+                <div class="laptop">
+                    <div class="screen">
+                        <div class="screen-inner">
+                            <div class="mini-topbar">
+                                <div class="mini-logo"><span class="mini-dot"></span> Samuel Romão</div>
+                            </div>
+                            <div class="mini-cards">
+                                <div class="mini-card">
+                                    <div class="n">7.340</div>
+                                    <div class="l">Visitantes</div>
+                                </div>
+                                <div class="mini-card">
+                                    <div class="n">8.320</div>
+                                    <div class="l">Leads</div>
+                                </div>
+                                <div class="mini-card">
+                                    <div class="n">3.200</div>
+                                    <div class="l">Pedidos</div>
+                                </div>
+                                <div class="mini-card">
+                                    <div class="n">7.120</div>
+                                    <div class="l">Receita</div>
+                                </div>
+                            </div>
+                            <div class="mini-chart">
+                                <span style="height:35%"></span><span style="height:55%"></span><span
+                                    style="height:40%"></span>
+                                <span style="height:70%"></span><span style="height:50%"></span><span
+                                    style="height:85%"></span>
+                                <span style="height:60%"></span><span style="height:75%"></span><span
+                                    style="height:45%"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="base"></div>
+                </div>
+
+                <div class="tablet">
+                    <div class="tscreen">
+                        <div class="mini-dark-topbar">
+                            <div class="mini-dark-logo"><span class="mini-dot" style="width:6px;height:6px;"></span>
+                                Samuel Romão</div>
+                        </div>
+                        <div class="mini-dark-eyebrow">● DESENVOLVIMENTO WEB &amp; VENDA DE SISTEMAS</div>
+                        <div class="mini-dark-h">Construindo <b>Soluções Web.</b><br>Entregando <b>Resultados.</b></div>
+                        <div class="mini-dark-p">Eu projeto e desenvolvo sites modernos e soluções inovadoras em
+                            sistemas.</div>
+                        <div class="mini-dark-btns">
+                            <div class="p">Ver Trabalho</div>
+                            <div class="g">Serviços</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phone">
+                    <div class="pscreen">
+                        <div class="mini-dark-eyebrow" style="margin-bottom:8px;">● WEB &amp; SISTEMAS</div>
+                        <div class="mini-dark-h" style="font-size:9px;">Construindo <b>Soluções Web.</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre" class="about" style="padding:48px 48px;background:transparent;">
+        <div style="max-width:1100px;margin:0 auto;">
+            <h2 style="font-size:28px;margin-bottom:12px;color:var(--ink);">Sobre</h2>
+            <p style="color:var(--muted);max-width:900px;">Sou desenvolvedor web com foco em criar soluções digitais e
+                sistemas que ajudam empresas a crescer, melhorar processos e aumentar resultados.</p>
+        </div>
+    </section>
+
+    <section id="projetos" class="projects">
+        <div class="projects-head">
+            <div>
+                <div class="eyebrow-2">TRABALHOS RECENTES</div>
+                <h2>Projetos &amp; Soluções</h2>
+            </div>
+            <div class="right">
+                <p>Uma seleção de sites e sistemas que desenvolvi para clientes de diferentes setores.</p>
+                <a href="#projetos" class="link-btn">Ver Todos os Projetos
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid">
+            <a class="card-link" href="https://example.com/site-industrial" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t1">
+                        <h3>Precisão. Qualidade.<br>Confiabilidade.</h3>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Site Industrial</div>
+                            <div class="s">Site Corporativo</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="card-link" href="https://example.com/site-imobiliario" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t2">
+                        <h3>Encontre a Casa<br>dos Seus Sonhos</h3>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Site Imobiliário</div>
+                            <div class="s">Plataforma de Anúncios</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="card-link" href="https://example.com/ecommerce" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t3">
+                        <h3>Produtos Premium<br>Preços Imperdíveis</h3>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Site de E-commerce</div>
+                            <div class="s">Loja Online</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="card-link" href="https://example.com/estoque" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t4">
+                        <div style="width:100%;">
+                            <div class="mini-chart"
+                                style="height:60px;background:transparent;box-shadow:none;padding:0;">
+                                <span style="height:40%"></span><span style="height:70%"></span><span
+                                    style="height:55%"></span><span style="height:85%"></span><span
+                                    style="height:60%"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Sistema de Estoque</div>
+                            <div class="s">Sistema Web</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="card-link" href="https://example.com/rh" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t5">
+                        <div style="width:100%;">
+                            <div class="mini-chart"
+                                style="height:60px;background:transparent;box-shadow:none;padding:0;">
+                                <span style="height:50%"></span><span style="height:35%"></span><span
+                                    style="height:80%"></span><span style="height:45%"></span><span
+                                    style="height:65%"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Sistema de Gestão de RH</div>
+                            <div class="s">Sistema Web</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="card-link" href="https://example.com/site-escolar" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t6">
+                        <h3>Impulsionando a Educação<br>para um Futuro Melhor</h3>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Site Escolar</div>
+                            <div class="s">Site Educacional</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="card-link" href="https://example.com/clinica" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t7">
+                        <h3>Sua Saúde,<br>Nossa Prioridade</h3>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Sistema de Gestão de Clínica</div>
+                            <div class="s">Sistema Web</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+
+            <a class="card-link" href="https://example.com/crm" target="_blank" rel="noopener noreferrer">
+                <div class="card">
+                    <div class="thumb t8">
+                        <div style="width:100%;">
+                            <div class="mini-chart"
+                                style="height:60px;background:transparent;box-shadow:none;padding:0;">
+                                <span style="height:65%"></span><span style="height:40%"></span><span
+                                    style="height:75%"></span><span style="height:55%"></span><span
+                                    style="height:30%"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div>
+                            <div class="t">Sistema de Vendas &amp; CRM</div>
+                            <div class="s">Sistema Web</div>
+                        </div>
+                        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+                                <path d="M7 17L17 7M8 7h9v9" />
+                            </svg></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção Serviços -->
+    <section id="servicos" class="services"
+        style="padding:44px 48px;background:var(--paper-2);border-top:1px solid var(--line);">
+        <div style="max-width:1200px;margin:0 auto;">
+            <h2 style="font-size:28px;margin-bottom:12px;color:var(--ink);">Serviços</h2>
+            <p style="color:var(--muted);max-width:900px;margin-bottom:18px;">Desenvolvimento de sites, lojas virtuais,
+                sistemas web sob medida, integração de APIs e manutenção contínua.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-inner">
+            <div class="feature">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="13" rx="2" />
+                        <path d="M8 21h8M12 17v4" />
+                    </svg></div>
+                <div>
+                    <h4>Moderno &amp; Responsivo</h4>
+                    <p>Sites com ótima aparência em todos os dispositivos.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1 3-6z" />
+                    </svg></div>
+                <div>
+                    <h4>Sistemas Personalizados</h4>
+                    <p>Soluções sob medida para as necessidades do seu negócio.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z" />
+                    </svg></div>
+                <div>
+                    <h4>Suporte Confiável</h4>
+                    <p>Suporte contínuo e manutenção em que você pode confiar.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <path d="M3 17l6-6 4 4 8-8M21 7v6h-6" />
+                    </svg></div>
+                <div>
+                    <h4>Focado em Resultados</h4>
+                    <p>Soluções que ajudam seu negócio a crescer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer" id="contato">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">
+                    <div class="logo-mark">S</div>
+                    <h3>Samuel Romão</h3>
+                </div>
+                <p class="footer-copy">
+                    Desenvolvedor web e criador de soluções digitais para negócios que querem crescer com tecnologia,
+                    produtividade e presença online forte.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <a href="mailto:samuelfreire2527@gmail.com">samuelfreire2527@gmail.com</a>
+                <a href="tel:+55859966944355">+55 (85) 996694-4355</a>
+                <p>Fortaleza, CE</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#projetos">Projetos</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Redes</h4>
+                <div class="socials">
+                    <a class="github" href="https://github.com/samuel-freire-romao/projeto" target="_blank"
+                        rel="noopener noreferrer" aria-label="GitHub">git</a>
+                    <a class="instagram" href="https://www.instagram.com/site_lab_criativo/" target="_blank"
+                        rel="noopener noreferrer" aria-label="Instagram">insta</a>
+                    <a class="whatsapp" href="https://wa.me/55859966944355" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp">wats</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 Samuel Romão — Todos os direitos reservados</div>
+    </footer>
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Et7efbV-84C_Xq62zK5UY"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
+    <script>
+
+        // --- SERVER CODE ---
+        const jwt = require('jsonwebtoken');
+
+        const secret = process.env.CHATBOT_IDENTITY_SECRET; // Your chatbase secret key (should be stored as a secret not in the code)
+
+        const user = await getSignedInUser(); // Get the current user signed in to your site
+
+        const token = jwt.sign(
+            {
+                user_id: user.id, // Your user's id
+                email: user.email, // User's email
+                stripe_accounts: user.stripe_accounts, // User's stripe accounts for stripe integration
+                // ... other custom attributes
+            },
+            secret,
+            { expiresIn: '1h' }
+        );
+
+        // --- CLIENT CODE ---
+        const token = await getUserToken(); // Get the token from your server
+        window.chatbase('identify', { token }); // identify the user with Chatbase
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
